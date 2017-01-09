@@ -1,0 +1,32 @@
+<script>
+  window.onload = function() {
+  var startPos;
+  var geoSuccess = function(position) {
+    startPos = position;
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    $.ajax({
+      url: "/users.json",
+      type: "POST",
+      data: {
+        user:{
+          lat: lat,
+          lng: lng 
+        }
+        
+      },
+      dataType: "text",
+      complete: function(){
+
+      },
+      success: function(data){
+        window.location='http://www.google.com";'
+      },
+      error: function(data){
+
+      }
+    })
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+};
+</script>
